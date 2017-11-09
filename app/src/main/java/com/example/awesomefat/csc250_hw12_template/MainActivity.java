@@ -13,21 +13,27 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
-        //how Android implements MVC
-        //lets this activity know which XML layout it should show
         this.setContentView(R.layout.activity_main);
     }
 
-    //MVC expose this function to the interface builder
+    public String reverse()
+    {
+        String answer = "";
+        for(int i = this.length()-1; i >= 0; i--)
+        {
+            answer = answer + this.charAt(i);
+        }
+        return answer;
+    }
+
     public void onChangeButtonPressed(View v)
     {
-        //v will be the widget that calls this function upon being clicked
-
-        //MVC - linking interface widget to local variable
         EditText inputET = (EditText)this.findViewById(R.id.inputET);
+        EditText inputET2 = (EditText)this.findViewById(R.id.inputET2);
+        String output1 = reverse(inputET);
+        String output2 = reverse(inputET2);
         TextView myLabel = (TextView)this.findViewById(R.id.myLabel);
-        myLabel.setText(inputET.getText().toString());
+        myLabel.setText(output1 + output2);
     }
 
 }
