@@ -16,12 +16,12 @@ public class MainActivity extends AppCompatActivity
         this.setContentView(R.layout.activity_main);
     }
 
-    public String reverse()
+    private String reverse(String s)
     {
         String answer = "";
-        for(int i = this.length()-1; i >= 0; i--)
+        for(int i = s.length()-1; i >= 0; i--)
         {
-            answer = answer + this.charAt(i);
+            answer = answer + s.charAt(i);
         }
         return answer;
     }
@@ -30,10 +30,10 @@ public class MainActivity extends AppCompatActivity
     {
         EditText inputET = (EditText)this.findViewById(R.id.inputET);
         EditText inputET2 = (EditText)this.findViewById(R.id.inputET2);
-        String output1 = reverse(inputET);
-        String output2 = reverse(inputET2);
         TextView myLabel = (TextView)this.findViewById(R.id.myLabel);
-        myLabel.setText(output1 + output2);
+        String reverse = this.reverse(inputET.getText().toString());
+        String reverse2 = this.reverse(inputET2.getText().toString());
+        myLabel.setText(reverse + reverse2);
     }
 
 }
